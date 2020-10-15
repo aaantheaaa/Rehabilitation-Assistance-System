@@ -3,16 +3,17 @@ var http = require('http');
 let fs = require('fs');
 
 http.createServer(function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/html'
-    });
-    fs.readFile('./web/index.html', null, function (error, data) {
-        if (error) {
-            res.writeHead(404);
-            res.write('Whoops! File not found!');
-        } else {
-            res.write(data);
-        }
-        res.end();
-    });
+    if (req.url === '/trial.html' || req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.createReadStream(__dirname + './web/trial.html').pipe(res);
+    } else if (req.url === '/programs.html') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.createReadStream(__dirname + './web/programs.html').pipe(res);
+    } else if (req.url === '/doctors.html') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.createReadStream(__dirname + './web/doctors.html').pipe(res);
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        fs.createReadStream(__dirname + '/404.html').pipe(res);
+    }
 }).listen(PORT);
