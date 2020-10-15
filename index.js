@@ -3,7 +3,7 @@ var http = require('http');
 let fs = require('fs');
 
 http.createServer(function (req, res) {
-    if (req.url === '/index.html' || req.url === '/') {
+    if (req.url === 'https://rehabilitation-iot2020.herokuapp.com//index.html' || req.url === 'https://rehabilitation-iot2020.herokuapp.com//') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         fs.createReadStream(__dirname + './web/index.html').pipe(res);
     } else if (req.url === '/programs.html') {
