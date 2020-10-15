@@ -3,9 +3,9 @@ var http = require('http');
 let fs = require('fs');
 
 http.createServer(function (req, res) {
-    if (req.url === '/trial.html' || req.url === '/') {
+    if (req.url === '/index.html' || req.url === '/') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        fs.createReadStream(__dirname + './web/trial.html').pipe(res);
+        fs.createReadStream(__dirname + './web/index.html').pipe(res);
     } else if (req.url === '/programs.html') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         fs.createReadStream(__dirname + './web/programs.html').pipe(res);
