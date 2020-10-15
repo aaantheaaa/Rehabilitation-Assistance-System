@@ -14,6 +14,6 @@ http.createServer(function (req, res) {
         fs.createReadStream(__dirname + '/web/doctors.html').pipe(res);
     } else {
         res.writeHead(404, { 'Content-Type': 'text/html' });
-        fs.createReadStream(__dirname + '/404.html').pipe(res);
+        fs.createReadStream(__dirname + '/web/404.html').pipe(res);
     }
 }).listen(PORT);
