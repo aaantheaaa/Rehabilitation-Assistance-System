@@ -238,7 +238,11 @@
     <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
     <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script>
-        var login = sessionStorage.getItem("login");
+        
+        if (sessionStorage.getItem("login") == null) {
+            sessionStorage.setItem("login", "-1"); // -1 means not logged in, it logged in it will be id number (positive number)
+        }
+        var login = sessionStorage.getItem("login");        
         if (login != "-1") {
             document.getElementById("signinButton").style.display = "none";
             document.getElementById("signupButton").style.display = "none";
