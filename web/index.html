@@ -100,6 +100,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="doctors.html">Doctors</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patientDashboard.html" id="trainButton" type="button" style="display:none;">Train</a>
+                    </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
                     <a class="btn btn-outline-success mr-2" id="signinButton" href="signin.html" type="button">Sign In</a>
@@ -236,17 +239,18 @@
     <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script>
         var login = sessionStorage.getItem("login");
-        if (login == "valid") {
+        if (login != "-1") {
             document.getElementById("signinButton").style.display = "none";
             document.getElementById("signupButton").style.display = "none";
             document.getElementById("logoutButton").style.display = "block";
+            document.getElementById("trainButton").style.display = "block";
         } 
         function logout() {
-            sessionStorage.setItem("login", "notvalid");
+            sessionStorage.setItem("login", "-1");
             document.getElementById("signinButton").style.display = "block";
             document.getElementById("signupButton").style.display = "block";
             document.getElementById("logoutButton").style.display = "none";
-
+            document.getElementById("trainButton").style.display = "none";
         }
     </script>
 </body>
