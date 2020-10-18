@@ -8,13 +8,27 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/web/index.html'));
 })
+app.get('/index.html', function (req, res) {
+    res.sendFile(path.join(__dirname + '/web/index.html'));
+})
 app.get('/programs.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/programs.html'));
 })
 app.get('/patientDashboard.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/patientDashboard.html'));
 })
-
+app.get('/doctors.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/doctors.html'));
+})
+app.get('/signin.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/signin.html'));
+})
+app.get('/signup.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/signup.html'));
+})
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/404.html'));
+})
 var server = app.listen(port, function() {
     var host = server.address().address
     var port = server.address().port
