@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 let fs = require('fs');
 var path = require('path');
+const port = process.env.PORT || 8081;
 
 app.use(express.static('public'));
 app.get('/', function (req, res) {
@@ -14,7 +15,7 @@ app.get('/patientDashboard.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/patientDashboard.html'));
 })
 
-var server = app.listen(8081, function() {
+var server = app.listen(port, function() {
     var host = server.address().address
     var port = server.address().port
 
