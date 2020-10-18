@@ -17,6 +17,9 @@ app.get('/programs.html', function(req, res) {
 app.get('/patientDashboard.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/patientDashboard.html'));
 })
+app.get('/practitionerDashboard.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/practitionerDashboard.html'));
+})
 app.get('/doctors.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/doctors.html'));
 })
