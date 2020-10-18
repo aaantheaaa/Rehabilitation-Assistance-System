@@ -176,3 +176,7 @@ table {
 .btn-next {
 	right: 6em;
 }
+
+.big {
+	font-size: 20;
+}
