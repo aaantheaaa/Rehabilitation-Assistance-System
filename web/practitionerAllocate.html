@@ -18,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-    <script type="text/javascript" src="smoothie.js"></script>
 </head>
 
 <header>
@@ -32,18 +31,14 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="patientDashboard.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="practitionerDashboard.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="programs.html">Programs</a>
+                    <a class="nav-link" href="#">Patients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="doctors.html">Doctors</a>
+                    <a class="nav-link" href="#">Add Exercise</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Train</a>
-                </li>
-
             </ul>
             <form class="form-inline mt-2 mt-md-0">
                 <a class="btn btn-outline-success mr-2" href="signin.html">Sign In</a>
@@ -55,46 +50,45 @@
 
 <main role="main">
 
-    <body onload="createTimeline()">
+    <body>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
                         <h1>
-                            RAS - Train
+                            RAS - Assign Exercises to Patients
                         </h1>
                     </div>
                 </div>
             </div>
-
-            <!-- START Graph -->
+        
             <div class="row border rounded bg-light shadow m-3 p-3 justify-content-center">
-                <canvas id="smoothie-chart" width="1000" height="400"></canvas>
-                <script>   
-                    console.log("running");
-                    // Generating random value to plot TODO maths here that mimics motion of
-                    var random = new TimeSeries();
-                    setInterval(function() {
-                        random.append(new Date().getTime(), Math.random() * 5000);
-                    }, 500);
-
-                    function createTimeline() {
-                    var chart = new SmoothieChart({ grid: { fillStyle: '#ffffff' }, maxValue: 10000, minValue: -10000, horizontalLines: [{ color: '#ffffff', lineWidth: 1, value: 0 }, { color: '#880000', lineWidth: 2, value: 3333 }, { color: '#880000', lineWidth: 2, value: -3333 }] }),
-                        canvas = document.getElementById('smoothie-chart');
-
-                    chart.addTimeSeries(random, { lineWidth: 3.2, strokeStyle: '#00e1ff' });
-                    chart.streamTo(canvas, 500);
-                    }
-                </script>
+                <form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">PatientID</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                          <option selected>Choose...</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                      <label for="patientName">Patient Name</label>
+                      <input type="text" class="form-control" id="patientName" placeholder="James Tenna">
+                    </div>
+                    <div class="form-group">
+                        <label for="Exercise">Exercise</label>
+                        <input type="text" class="form-control" id="Exercise" placeholder="Biceps Brachii Flexion">
+                      </div>
+                      <div class="form-group">
+                        <label for="Exercise">repititions</label>
+                        <input type="text" class="form-control" id="repititions" placeholder="30">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
             </div>
 
-        </div>
-
-
-
-        <footer class="mt-auto m-3 p-3">
-            <p class="float-right"><a href="#">Back to top</a></p>
-            <p>&copy; UTS Internet of Things group5</p>
-        </footer>
-</main>
-</body>
+    
