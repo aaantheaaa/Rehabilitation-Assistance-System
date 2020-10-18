@@ -111,12 +111,25 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
+            <p id="demo">default</p>
             <p class="mt-5 mb-3 text-muted">&copy; UTS IoT group5 2020</p>
         </form>
     
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script>
+    function login() {
+        var email = document.getElementById("inputEmail").value;
+        var password = document.getElementById("inputPassword").value;
+        if (email == "123@gmail.com" && password == "123") {
+            document.getElementById("demo").innerHTML = "login valid";
+        }
+        else {
+            document.getElementById("demo").innerHTML = "login failed";
+        }
+    }
+</script>
 </body>
 </html>
