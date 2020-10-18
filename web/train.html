@@ -72,7 +72,7 @@
                 <canvas id="smoothie-chart" width="1000" height="400"></canvas>
                 <script>   
                     console.log("running");
-
+                    // Generating random value to plot TODO maths here that mimics motion of arm
                     var random = new TimeSeries();
                     setInterval(function() {
                         random.append(new Date().getTime(), Math.random() * 5000);
