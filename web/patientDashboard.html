@@ -69,17 +69,36 @@
             <!-- START GRAPHS -->
             <div class="row border rounded bg-light shadow m-3 p-3">
                 <div class="col-md-4 d-flex flex-grow justify-content-center">
-                    <div data-preset="circle" class="today-progress ldBar label-center" data-value="85">
+                    <div id="todayProg" class="ldBar label-center">
+                        <script>
+                            var bar1 = new ldBar("#todayProg", {
+                                "preset": "circle"});
+                            bar1.set(90);
+                        </script>
                     </div>
                     <span class="badge badge-default">Todays Tasks</span>
                 </div>
+
+                
                 <div class="col-md-4 d-flex justify-content-center">
-                    <div data-preset="circle" class="ldBar label-center month-progress" data-value="35">
+                    <div id="monthProg" class="ldBar label-center">
+                        <script>
+                            var bar2 = new ldBar("#monthProg", {
+                                "preset": "circle"});
+                            bar2.set(23);
+                        </script>
                     </div>
                     <span class="badge badge-default">Months Progress</span>
                 </div>
+
+
                 <div class="col-md-4 d-flex justify-content-center">
-                    <div data-preset="circle" class="ldBar label-center program-progress" data-value="12">
+                    <div id="progProg" class="ldBar label-center">
+                        <script>
+                            var bar3 = new ldBar("#progProg", {
+                                "preset": "circle"});
+                            bar3.set(9);
+                        </script>
                     </div>
                     <span class="badge badge-default">Program Completion</span>
                 </div>
@@ -217,4 +236,15 @@
             <p>&copy; UTS Internet of Things group5</p>
         </footer>
 </main>
+<div id="myItem2"></div>
+
+
+<script>
+    var bar1 = new ldBar("#myItem2", {
+        "preset": "circle"});
+    bar1.set(90);
+</script>
 </body>
+
+
+

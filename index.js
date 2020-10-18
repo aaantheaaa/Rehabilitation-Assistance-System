@@ -4,7 +4,9 @@ let fs = require('fs');
 var path = require('path');
 const port = process.env.PORT || 8081;
 
-app.use(express.static('public'));
+app.use(express.static('public')); // Serves the JS and CSS files in the public folder
+
+// Routing
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/web/index.html'));
 })
