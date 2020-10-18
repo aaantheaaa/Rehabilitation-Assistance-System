@@ -81,6 +81,7 @@
     </style>
 </head>
 <body>
+
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
@@ -101,15 +102,16 @@
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <a class="btn btn-outline-success mr-2" href="signin.html">Sign In</a>
-                    <a class="btn btn-outline-primary" href="signup.html">Sign Up</a>
+                    <a class="btn btn-outline-success mr-2" id="signinButton" href="signin.html" type="button">Sign In</a>
+                    <a class="btn btn-outline-primary" id="signupButton" href="signup.html" type="button">Sign Up</a>
+                    <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button" style="display:none;">Log out</button>
                 </form>
             </div>
         </nav>
     </header>
 
     <main role="main">
-        
+
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -232,6 +234,21 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
     <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script>
+        var login = sessionStorage.getItem("login");
+        if (login == "valid") {
+            document.getElementById("signinButton").style.display = "none";
+            document.getElementById("signupButton").style.display = "none";
+            document.getElementById("logoutButton").style.display = "block";
+        } 
+        function logout() {
+            sessionStorage.setItem("login", "notvalid");
+            document.getElementById("signinButton").style.display = "block";
+            document.getElementById("signupButton").style.display = "block";
+            document.getElementById("logoutButton").style.display = "none";
+
+        }
+    </script>
 </body>
 </html>
 

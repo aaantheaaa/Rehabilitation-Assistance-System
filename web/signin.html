@@ -112,7 +112,6 @@
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
-            <p id="demo">default</p>
             <p class="mt-5 mb-3 text-muted">&copy; UTS IoT group5 2020</p>
         </form>
     
@@ -124,10 +123,12 @@
         var email = document.getElementById("inputEmail").value;
         var password = document.getElementById("inputPassword").value;
         if (email == "123@gmail.com" && password == "123") {
-            document.getElementById("demo").innerHTML = "login valid";
+            window.alert("login succeed!");
+            sessionStorage.setItem("login","valid");
+            window.location.href = "index.html";
         }
         else {
-            document.getElementById("demo").innerHTML = "login failed";
+            window.alert("login failed!");
         }
     }
 </script>
