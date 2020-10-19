@@ -4,6 +4,17 @@ let fs = require('fs');
 var path = require('path');
 const port = process.env.PORT || 8081;
 
+const mongoose = require("mongoose");
+const URI ="mongodb+srv://anthea:123@cluster0.bfxlf.azure.mongodb.net/Patient?retryWrites=true&w=majority";
+mongoose.connect(URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,  
+  },(error) => {
+      if(!error){console.log("db connection success");}
+      else{console.log("db connection error");}
+  }
+  );
+
 app.use(express.static('public'));
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/web/index.html'));
