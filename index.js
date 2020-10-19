@@ -167,11 +167,8 @@ console.log("in post login ");
             .then((patient)=>{
                 res.render('patientDashboard',{patient:patient});
             })
-            
         })
 
-
-        
 
         app.post('/logout',redirectLogin,(req,res)=>{
             req.session.destroy(err=>{

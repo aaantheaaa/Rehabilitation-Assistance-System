@@ -31,12 +31,10 @@
                         <a class="nav-link" href="/doctors">Doctors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/patientDashboard" id="trainButton" type="button" style="display:none;">Train</a>
+                        <a class="nav-link" href="/patientDashboard" id="trainButton" type="button" >Train</a>
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <a class="btn btn-outline-success mr-2" id="signinButton" href="/login" type="button">Sign In</a>
-                    <a class="btn btn-outline-primary" id="signupButton" href="/register" type="button">Sign Up</a>
                     <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button" style="display:none;">Log out</button>
                 </form>
             </div>
@@ -214,7 +212,7 @@
         var login = sessionStorage.getItem("login");
         function logout() {
             sessionStorage.setItem("login", "-1");
-            window.location.href = "index.html";
+            location.replace('home')
         }
     </script>
 </body>
