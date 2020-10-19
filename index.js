@@ -4,16 +4,30 @@ let fs = require('fs');
 var path = require('path');
 const port = process.env.PORT || 8081;
 
-const mongoose = require("mongoose");
-const URI ="mongodb+srv://anthea:123@cluster0.bfxlf.azure.mongodb.net/Patient?retryWrites=true&w=majority";
-mongoose.connect(URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,  
-  },(error) => {
-      if(!error){console.log("db connection success");}
-      else{console.log("db connection error");}
-  }
-  );
+//database connection---------------------------------------
+const expressHandlebars = require("express-handlebars");
+const bodyparser = require("body-parser");
+const connection = require("./model/connection");
+
+app.use(bodyparser.urlencoded({
+    extended: true
+}));
+
+app.set('views',path.join(__dirname,"/web/"));
+app.engine("hbs",expressHandlebars({
+    extname: "hbs",
+    defaultLayout: "mainlayout",
+    layoutDir : __dirname + "/web/patients"
+}));
+
+app.set("view engine", "hbs");
+
+app.get("/",(req,res)=>{
+    //res.send('<h1>hello world<h1>');
+    res.render("patients",{});
+});
+
+//------------------------------------------------------@seul
 
 app.use(express.static('public'));
 app.get('/', function (req, res) {
