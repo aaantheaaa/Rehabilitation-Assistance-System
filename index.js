@@ -7,7 +7,8 @@ const port = process.env.PORT || 8081;
 //database connection---------------------------------------
 const expressHandlebars = require("express-handlebars");
 const bodyparser = require("body-parser");
-const connection = require("./model/connection");
+const connectDB = require('./model/connection');
+connectDB();
 const patientController = require("./controller/patients")
 
 app.use(bodyparser.urlencoded({
