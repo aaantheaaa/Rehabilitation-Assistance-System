@@ -18,4 +18,4 @@ var PatientSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model("Patient",PatientSchema);
+mongoose.model("Patient",PatientSchema); //should be same name as the one in /controller/patients.js line5

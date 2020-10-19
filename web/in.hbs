@@ -1,0 +1,43 @@
+<h1>
+    Patients
+</h1>
+
+<table>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Doctor in charge
+        </th>
+    </tr>
+    {{#each data}}
+    <tr>
+        <td>
+            {{this.id}}
+        </td>
+        <td>
+            {{this.name}}
+        </td>
+        <td>
+            {{this.phone}}
+        </td>
+        <td>
+            {{this.address}}
+        </td>
+        <td>
+            {{this.doctor}}
+        </td>
+    </tr>
+    {{/each}}
+</table>
+

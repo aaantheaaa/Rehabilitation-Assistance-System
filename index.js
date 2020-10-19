@@ -8,6 +8,7 @@ const port = process.env.PORT || 8081;
 const expressHandlebars = require("express-handlebars");
 const bodyparser = require("body-parser");
 const connection = require("./model/connection");
+const patientController = require("./controller/patients")
 
 app.use(bodyparser.urlencoded({
     extended: true
@@ -17,15 +18,17 @@ app.set('views',path.join(__dirname,"/web/"));
 app.engine("hbs",expressHandlebars({
     extname: "hbs",
     defaultLayout: "mainlayout",
-    layoutDir : __dirname + "/web/patients"
+    layoutDir : __dirname + "/web/in"
 }));
 
 app.set("view engine", "hbs");
 
 app.get("/",(req,res)=>{
     //res.send('<h1>hello world<h1>');
-    res.render("patients",{});
+    res.render("in",{});
 });
+
+app.use("/patient",patientController);
 
 //------------------------------------------------------@seul
 
