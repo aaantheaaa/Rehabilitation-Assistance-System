@@ -34,7 +34,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
-            <a class="navbar-brand" href="#">Rehabilitation Assistance</a>
+            <a class="navbar-brand" href="index.html">Rehabilitation Assistance</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,10 +49,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="doctors.html">Doctors</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patientDashboard.html" id="trainButton" type="button" style="display:none;">Train</a>
+                    </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <a class="btn btn-outline-success mr-2" href="signin.html">Sign In</a>
-                    <a class="btn btn-outline-primary" href="signup.html">Sign Up</a>
+                    <a class="btn btn-outline-success mr-2" id="signinButton" href="signin.html" type="button">Sign In</a>
+                    <a class="btn btn-outline-primary" id="signupButton" href="signup.html" type="button">Sign Up</a>
+                    <button class="mr-2" id="nameButton" type="button" style="display:none;"><%=patient.name%></button>
+                    <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button" style="display:none;">Log out</button>
                 </form>
             </div>
         </nav>
@@ -101,6 +106,14 @@
                         <input type="email" class="form-control" id="email" placeholder="you@example.com">
                         <div class="invalid-feedback">
                             Please enter a valid email address for progress updates.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" id="password" >
+                        <div class="invalid-feedback">
+                            Please enter a valid password.
                         </div>
                     </div>
 
@@ -168,7 +181,7 @@
                     <div class="invalid-feedback">
                         Please choose a doctor.
                     </div>
-                    <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Register</button>
+                    <button class="btn btn-primary btn-lg btn-block mt-4" type="submit" onclick="submitForm(event)">Register</button>
                 </form>
             </div>
         </div>
@@ -186,6 +199,44 @@
     <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
     <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="form-validation.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function submitform(event){
+            event.preventDefault()
+            var name=document.getElementById('firstName').value +" "+document.getElementById('lastName').value;
+            var email=document.getElementById('email').value;
+            var password=document.getElementById('password').value;
+            var phone=document.getElementById('phone').value;
+            var address=document.getElementById('address').value+" "+document.getElementById('state').value+" "+document.getElementById('country').value+" "+document.getElementById('zip').value;
+            console.log("register page "+name +" "+email +" "+password+" "+phone+" "+address)  
+            sendDetails(name,email,password,phone,address);
+
+        }
+        function sendDetails(name,email,password,phone,address){
+            axios.post('/register',{name,email,password,phone,address})
+            .then((response)=>{
+                if(response.status==200 && response.data.usererror=="Userexists") {
+                    alert("User already exists");
+                    location.replace('register');
+                }
+                else if(response.status==200){
+                    location.replace('login');
+                } 
+                
+                if(response.status==500){
+                    alert("internal error");
+                }
+
+            })
+            .catch((error)=>{
+                console.log("error in function sendDetails in register.ejs")
+            })
+
+        }
+
+
+
+</script>
 </body>
 </html>
 

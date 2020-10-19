@@ -24,28 +24,28 @@ const IN_PROD=NODE_ENV==='production '
 
 app.use(express.static('public'));
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/web/index.html'));
+    res.sendFile(path.join(__dirname + '/web/index'));
 })
 app.get('/index.html', function (req, res) {
-    res.sendFile(path.join(__dirname + '/web/index.html'));
+    res.sendFile(path.join(__dirname + '/web/index'));
 })
 app.get('/programs.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/programs.html'));
+    res.sendFile(path.join(__dirname + '/web/programs'));
 })
 app.get('/patientDashboard.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/patientDashboard.html'));
+    res.sendFile(path.join(__dirname + '/web/patientDashboard'));
 })
 app.get('/doctors.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/doctors.html'));
+    res.sendFile(path.join(__dirname + '/web/doctors'));
 })
 app.get('/signin.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/signin.html'));
+    res.sendFile(path.join(__dirname + '/web/signin'));
 })
 app.get('/signup.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/signup.html'));
+    res.sendFile(path.join(__dirname + '/web/signup'));
 })
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/404.html'));
+    res.sendFile(path.join(__dirname + '/web/404'));
 })
 
 app.use(bodyParser.urlencoded({
@@ -84,64 +84,12 @@ app.use(bodyParser.json());
         }
     }))
 
-    app.get('/',redirectLogin,(req,res)=>{
-        const{userId}=req.session;
-        console.log(req.session);
-        res.send(`IN HOME PAGE`
-        )
-    })
-            app.get('/admin',(req,res)=>{
-                var error=[]
-                res.render('admin',{error})
-            })
-                app.post('/admin',(req,res)=>{
-                    var email=req.body.email;
-                    var password=req.body.password;
-                     console.log(email +"  "+ password)
-                        if(req.body.email==="doctor@gmail.com"){
-                               newbody.findOne({email:req.body.email})
-                                .then((patient)=>{
-                               if( patient ){
-                                    if(patient.password === req.body.password ){
-                                        console.log('admin authenticated');
-                                         req.session.userId=req.body.email;
-                                        newbody.find()
-                                        .then((details=>{
-                                            console.log(details)
-                                            var error=[];
-                                           res.render('adminhtml',{details});
-                                        })
-
-                                        )}
-                                
-                                    else{
-                                        var error=[];
-                                        error.push("Incorrect password");
-                                        console.log('incorrect password')
-                                        res.render("admin",{error});
-                                    }
-                               }
-                               else{
-                                    // res.send({emailError: "incorrectEmail"})
-                                    var error=[];
-                                    error.push("Email does does not exist");
-                                    console.log('Admin email doesnot match');
-                                    res.render("admin",{error});
-                               }
-                            })
-                             
-            
-                        }else{
-                            res.render('notadmin'); 
-                        }
-            
-                })
     app.get('/login',(req,res)=>{
      res.render('signin');
     })
 
     app.get('/register',(req,res)=>{
-        res.render('register');
+        res.render('signup');
     })
     
 
@@ -149,7 +97,6 @@ app.post('/login',(req,res)=>{
 console.log("in post login ");
         var email=req.body.email;
         var password=req.body.password;
-        // console.log(email +"  "+ password)
             if(email && password){
                 console.log("finding " + email + " in database");
                    newbody.findOne({email:req.body.email})
@@ -158,7 +105,7 @@ console.log("in post login ");
                         if(patient.password === req.body.password ){
                             console.log('user authenticated');
                             req.session.userId=req.body.email;
-                            res.redirect('/home')
+                            res.redirect('/index')
                         }
                         else{
                             res.send({passwordError: "incorrectPassword"})
@@ -169,14 +116,9 @@ console.log("in post login ");
                        console.log('User not found with this email')
                    }
                 })
-                //     if(user){
-                //         console.log("this is a user");
-                //         req.session.userId=req.body.email;
-                //    return res.redirect('/home');
-                //     }
 
             }else{
-                res.redirect('/login');
+                res.redirect('/signin');
             }
 
 })
@@ -200,47 +142,14 @@ console.log("in post login ");
                         sData.save()
                         req.session.userId=req.body.email;
                         console.log("DATA SAVED IN DATABASE");              
-                        return res.redirect('/home');                    
+                        return res.redirect('/index');                    
                     }
                 })            
-                
-                // newbody.findOne({email:req.body.email},function(err,alldetails){
-                //     if(err)
-                //     {
-                //         console.log(err);
-                //     }
-                //     if(alldetails){     
-                     
-                //         console.log('User already exist');
-                    
-                //     }
-                    //     else{
-                    //     var sData = new newbody()
-                    //     sData.name = name
-                    //     sData.email= email
-                    //     sData.password = password
-                    //     sData.save()
-                    //     req.session.userId=req.body.email;
-                    //     console.log("DATA SAVED IN DATABASE");              
-                    //     return res.redirect('/home');                    
-                    // }
-            // })
         })
-        app.get('/home' ,redirectLogin,(req,res)=>{
+        app.get('/index' ,redirectLogin,(req,res)=>{
             newbody.findOne({email:req.session.userId})
             .then((patient)=>{
-                res.render('home.ejs',{patient:patient});
-          
-            //         res.send(`
-            //     <h1>HOME</h1>
-            //     <ul>
-            //     <li> NAME: ${patient.name}</li>
-            //     <li> EMAIL ${patient.email}</li>
-            //     </ul>
-            // <form action='/logout' method="post">
-            // <button>LOGOUT</button>
-            // </form>
-            // `)
+                res.render('index.ejs',{patient:patient});
             })
             
         })
@@ -251,10 +160,10 @@ console.log("in post login ");
             req.session.destroy(err=>{
                 // console.log("error");
             if(err){
-                return res.redirect('/login');
+                return res.redirect('/signin');
             }
         res.clearCookie(SESS_NAME);
-        res.redirect('/login');
+        res.redirect('/signin');
 
         })
         })

@@ -74,7 +74,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
-            <a class="navbar-brand" href="#">Rehabilitation Assistance</a>
+            <a class="navbar-brand" href="index.html">Rehabilitation Assistance</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -89,10 +89,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="doctors.html">Doctors</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patientDashboard.html" id="trainButton" type="button" style="display:none;">Train</a>
+                    </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <a class="btn btn-outline-success mr-2" href="signin.html">Sign In</a>
-                    <a class="btn btn-outline-primary" href="signup.html">Sign Up</a>
+                    <a class="btn btn-outline-success mr-2" id="signinButton" href="signin.html" type="button">Sign In</a>
+                    <a class="btn btn-outline-primary" id="signupButton" href="signup.html" type="button">Sign Up</a>
+                    <button class="mr-2" id="nameButton" type="button" style="display:none;"><%=patient.name%></button>
+                    <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button" style="display:none;">Log out</button>
                 </form>
             </div>
         </nav>
@@ -111,13 +116,14 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="submitForm(event)">Sign in</button>
             <p class="mt-5 mb-3 text-muted">&copy; UTS IoT group5 2020</p>
         </form>
     
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     function login() {
         var email = document.getElementById("inputEmail").value;
@@ -130,6 +136,51 @@
         else {
             window.alert("login failed!");
         }
+    }
+</script>
+<script>
+    
+    function submitForm(event){
+        event.preventDefault()
+        var email = document.getElementById('email').value
+        var password = document.getElementById('password').value
+        sendDetail(email, password)
+    }
+
+    function sendDetail(email, password){
+        axios.post('/login', {email, password})
+        .then((response)=>{
+            if( response.status == 200 && response.data.emailError == "incorrectEmail"){
+                alert('user not found with this email')
+            }
+            if( response.status == 200 && response.data.passwordError == "incorrectPassword"){
+              alert("Incorrect password")
+            }
+            if( response.status == 200){
+                location.replace('home')
+            }
+            if( response.status == 500){
+                alert( 'internal error' )
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+</script>
+
+<script>
+    function myalert()
+    {
+        Swal.fire({
+            title: 'Custom animation with Animate.css',
+            animation: false,
+            
+            customClass: {
+              popup: 'animated tada'
+            
+            }
+          })
     }
 </script>
 </body>
