@@ -1,0 +1,221 @@
+<html lang="en">
+<head>
+    <script type="text/javascript" src="loading-bar.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="loading-bar.css"/>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
+            <a class="navbar-brand" href="index.html">Rehabilitation Assistance</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.ejs">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctors.ejs">Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patientDashboard.ejs" id="trainButton" type="button" style="display:none;">Train</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="btn btn-outline-success mr-2" id="signinButton" href="signin.ejs" type="button">Sign In</a>
+                    <a class="btn btn-outline-primary" id="signupButton" href="signup.ejs" type="button">Sign Up</a>
+                    <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button" style="display:none;">Log out</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>
+                            RAS - Rehabilitation Assistance System
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- START GRAPHS -->
+            <div class="row border rounded bg-light shadow m-3 p-3">
+                <div class="col-md-4 d-flex flex-grow justify-content-center">
+                    <div data-preset="circle"
+                         class="today-progress ldBar label-center"
+                         data-value="35"
+                         style="width: 25%;">
+                    </div>
+                    <span class="badge badge-default">Label</span>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div data-preset="circle"
+                         class="ldBar label-center month-progress"
+                         data-value="35">
+                    </div>
+                    <span class="badge badge-default">Label</span>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div data-preset="circle"
+                         class="ldBar label-center program-progress"
+                         data-value="35">
+                    </div>
+                    <span class="badge badge-default">Label</span>
+                </div>
+            </div>
+            <!-- END Graphs -->
+            <!-- START Calender -->
+            <div class="row border rounded bg-light shadow m-3 p-3 justify-content-center">
+                <div class="calendar">
+
+                    <header>
+
+                        <h2>October</h2>
+
+                        <a class="btn-prev fontawesome-angle-left" href="#"></a>
+                        <a class="btn-next fontawesome-angle-right" href="#"></a>
+
+                    </header>
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <td>Mo</td>
+                                <td>Tu</td>
+                                <td>We</td>
+                                <td>Th</td>
+                                <td>Fr</td>
+                                <td>Sa</td>
+                                <td>Su</td>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td class="prev-month">28</td>
+                                <td class="prev-month">29</td>
+                                <td class="prev-month">30</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td class="event">13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td class="current-day event">18</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td class="event">24</td>
+                                <td>25</td>
+                            </tr>
+
+                            <tr>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>30</td>
+                                <td>31</td>
+                                <td class="next-month">1</td>
+                            </tr>
+                            <tr>
+                                <td class="next-month">2</td>
+                                <td class="next-month">3</td>
+                                <td class="next-month">4</td>
+                                <td class="next-month">5</td>
+                                <td class="next-month">6</td>
+                                <td class="next-month">7</td>
+                                <td class="next-month">8</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- end calendar -->
+
+            </div> <!-- end container -->
+
+        </div>
+
+        <!-- BEGIN CARDS -->
+        <div class="row border rounded bg-light shadow m-3 p-3">
+            <div class="col-md-6">
+                <div class="card bg-default">
+                    <div class="card-body d-flex justify-content-center">
+                        <p class="card-text">
+                            <h3>Train</h3>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-default">
+                    <div class="card-body d-flex justify-content-center">
+                        <p class="card-text">
+                            <h3>Programs</h3>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-preset="circle"
+             class="today-progress ldBar label-center"
+             data-value="35"
+             style="width: 25%;">
+        </div>
+
+    </main>
+    <script>
+        var login = sessionStorage.getItem("login");
+        function logout() {
+            sessionStorage.setItem("login", "-1");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

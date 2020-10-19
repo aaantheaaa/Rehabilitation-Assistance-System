@@ -1,15 +1,15 @@
-var express = require('express');
+var mongoose=require('mongoose');
 var express=require('express')
 const session=require('express-session');
 var app = express();
 let fs = require('fs');
 var path = require('path');
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 4000;
 app.set('view engine', 'ejs');
 
 var bodyParser=require('body-parser');
 const { check, validationResult } = require('express-validator');
-var Schema=require('./userSchema');
+var Schema=require('./patientSchema');
 var newbody = mongoose.model("latestcollection",Schema);
 const TWO_HOURS=1000* 60 * 60 * 2
 const{
@@ -21,33 +21,33 @@ const{
 }=process.env
 
 const IN_PROD=NODE_ENV==='production '
-
+/*
 app.use(express.static('public'));
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/web/index'));
+    res.sendFile(path.join(__dirname + '/web/index.html'));
 })
-app.get('/index.html', function (req, res) {
-    res.sendFile(path.join(__dirname + '/web/index'));
+app.get('/index', function (req, res) {
+    res.sendFile(path.join(__dirname + '/web/index.html'));
 })
-app.get('/programs.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/programs'));
+app.get('/programs', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/programs.ejs'));
 })
-app.get('/patientDashboard.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/patientDashboard'));
+app.get('/patientDashboard', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/patientDashboard.ejs'));
 })
-app.get('/doctors.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/doctors'));
+app.get('/doctors', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/doctors.ejs'));
 })
-app.get('/signin.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/signin'));
+app.get('/signin', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/signin.ejs'));
 })
-app.get('/signup.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/signup'));
+app.get('/signup', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/signup.ejs'));
 })
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/web/404'));
+    res.sendFile(path.join(__dirname + '/web/404.ejs'));
 })
-
+*/
 app.use(bodyParser.urlencoded({
     extended:true
 }))
@@ -105,7 +105,7 @@ console.log("in post login ");
                         if(patient.password === req.body.password ){
                             console.log('user authenticated');
                             req.session.userId=req.body.email;
-                            res.redirect('/index')
+                            res.redirect('/home')
                         }
                         else{
                             res.send({passwordError: "incorrectPassword"})
@@ -118,7 +118,7 @@ console.log("in post login ");
                 })
 
             }else{
-                res.redirect('/signin');
+                res.redirect('/login');
             }
 
 })
@@ -142,14 +142,14 @@ console.log("in post login ");
                         sData.save()
                         req.session.userId=req.body.email;
                         console.log("DATA SAVED IN DATABASE");              
-                        return res.redirect('/index');                    
+                        return res.redirect('/home');                    
                     }
                 })            
         })
-        app.get('/index' ,redirectLogin,(req,res)=>{
+        app.get('/home' ,redirectLogin,(req,res)=>{
             newbody.findOne({email:req.session.userId})
             .then((patient)=>{
-                res.render('index.ejs',{patient:patient});
+                res.render('index',{patient:patient});
             })
             
         })
@@ -160,10 +160,10 @@ console.log("in post login ");
             req.session.destroy(err=>{
                 // console.log("error");
             if(err){
-                return res.redirect('/signin');
+                return res.redirect('/login');
             }
         res.clearCookie(SESS_NAME);
-        res.redirect('/signin');
+        res.redirect('/login');
 
         })
         })
