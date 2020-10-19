@@ -91,6 +91,18 @@ app.use(bodyParser.json());
     app.get('/register',(req,res)=>{
         res.render('signup');
     })
+
+    app.get('/patientDashboard',(req,res)=>{
+        res.render('patientDashboard');
+    })
+   
+    app.get('/programs',(req,res)=>{
+        res.render('programs');
+    })
+
+    app.get('/doctors',(req,res)=>{
+        res.render('doctors');
+    })
     
 
 app.post('/login',(req,res)=>{
@@ -149,7 +161,7 @@ console.log("in post login ");
         app.get('/home' ,redirectLogin,(req,res)=>{
             newbody.findOne({email:req.session.userId})
             .then((patient)=>{
-                res.render('index',{patient:patient});
+                res.render('patientDashboard',{patient:patient});
             })
             
         })

@@ -78,7 +78,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
-            <a class="navbar-brand" href="index.html">Rehabilitation Assistance</a>
+            <a class="navbar-brand" href="/home">Rehabilitation Assistance</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -88,13 +88,13 @@
                         <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="programs.ejs">Programs</a>
+                        <a class="nav-link" href="/programs">Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="doctors.ejs">Doctors</a>
+                        <a class="nav-link" href="/doctors">Doctors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="patientDashboard.ejs" id="trainButton" type="button" style="display:none;">Train</a>
+                        <a class="nav-link" href="/patientDashboard" id="trainButton" type="button" style="display:none;">Train</a>
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
@@ -128,20 +128,7 @@
 <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-    function login() {
-        var email = document.getElementById("inputEmail").value;
-        var password = document.getElementById("inputPassword").value;
-        if (email == "123@gmail.com" && password == "123") {
-            window.alert("login succeed!");
-            sessionStorage.setItem("login","123");
-            window.location.href = "index.html";
-        }
-        else {
-            window.alert("login failed!");
-        }
-    }
-</script>
+
 <script>
     
     function submitForm(event){
@@ -162,6 +149,7 @@
               alert("Incorrect password")
             }
             if( response.status == 200){
+                sessionStorage.setItem("login",email);
                 location.replace('home')
             }
             if( response.status == 500){

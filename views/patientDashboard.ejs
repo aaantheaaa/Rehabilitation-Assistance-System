@@ -15,28 +15,28 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
-            <a class="navbar-brand" href="index.html">Rehabilitation Assistance</a>
+            <a class="navbar-brand" href="/home">Rehabilitation Assistance</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="programs.ejs">Programs</a>
+                        <a class="nav-link" href="/programs">Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="doctors.ejs">Doctors</a>
+                        <a class="nav-link" href="/doctors">Doctors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="patientDashboard.ejs" id="trainButton" type="button" style="display:none;">Train</a>
+                        <a class="nav-link" href="/patientDashboard" id="trainButton" type="button" style="display:none;">Train</a>
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <a class="btn btn-outline-success mr-2" id="signinButton" href="signin.ejs" type="button">Sign In</a>
-                    <a class="btn btn-outline-primary" id="signupButton" href="signup.ejs" type="button">Sign Up</a>
+                    <a class="btn btn-outline-success mr-2" id="signinButton" href="/login" type="button">Sign In</a>
+                    <a class="btn btn-outline-primary" id="signupButton" href="/register" type="button">Sign Up</a>
                     <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button" style="display:none;">Log out</button>
                 </form>
             </div>
@@ -50,7 +50,7 @@
                 <div class="col-md-12">
                     <div class="page-header">
                         <h1>
-                            RAS - Rehabilitation Assistance System
+                            Welcome, <%=patient.name%>
                         </h1>
                     </div>
                 </div>
