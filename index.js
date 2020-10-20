@@ -130,6 +130,10 @@ app.use(bodyParser.json());
         res.render('train');
     })
 
+    app.get('*', function(req, res) {
+        res.render('404.ejs');
+    })
+
 app.post('/login',(req,res)=>{
 console.log("in post login ");
         var email=req.body.email;
