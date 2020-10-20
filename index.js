@@ -130,9 +130,6 @@ app.use(bodyParser.json());
         res.render('train');
     })
 
-    app.get('*', function(req, res) {
-        res.render('404.ejs');
-    })
 
 app.post('/login',(req,res)=>{
 console.log("in post login ");
@@ -194,6 +191,10 @@ console.log("in post login ");
             .then((patient)=>{
                 res.render('patientDashboard',{patient:patient});
             })
+        })
+
+        app.get('*', function(req, res) {
+            res.render('404.ejs');
         })
 
 
