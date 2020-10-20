@@ -52,6 +52,12 @@ app.get('/train.html', function(req, res) {
 app.get('/practitionerAllocate.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/practitionerAllocate.html'));
 })
+app.get('/train.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/train.html'));
+})
+app.get('/practitionerAllocate.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/practitionerAllocate.html'));
+})
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/404.ejs'));
 })
