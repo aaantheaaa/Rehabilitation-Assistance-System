@@ -44,7 +44,7 @@
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button" style="display:none;">Log out</button>
+                    <button class="btn btn-outline-primary" id="logoutButton" onclick="logout()" type="button">Log out</button>
                 </form>
             </div>
         </nav>
@@ -76,7 +76,7 @@
                     }, 500);
 
                     function createTimeline() {
-                    var chart = new SmoothieChart({ grid: { fillStyle: '#ffffff' }, maxValue: 10000, minValue: -10000, horizontalLines: [{ color: '#ffffff', lineWidth: 1, value: 0 }, { color: '#880000', lineWidth: 2, value: 3333 }, { color: '#880000', lineWidth: 2, value: -3333 }] }),
+                    var chart = new SmoothieChart({ grid: { fillStyle: '#ffffff' }, maxValue: 7000, minValue: -7000, horizontalLines: [{ color: '#ffffff', lineWidth: 1, value: 0 }, { color: '#880000', lineWidth: 2, value: 3333 }, { color: '#880000', lineWidth: 2, value: -3333 }] }),
                         canvas = document.getElementById('smoothie-chart');
 
                     chart.addTimeSeries(random, { lineWidth: 3.2, strokeStyle: '#00e1ff' });
