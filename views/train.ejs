@@ -75,7 +75,7 @@
                     // Generating random value to plot TODO maths here that mimics motion of
                     var random = new TimeSeries();
                     setInterval(function() {
-                        random.append(new Date().getTime(), Math.random() * 5000);
+                        random.append(new Date().getTime(), (Math.random() * 10001)-5000);
                     }, 500);
 
                     function createTimeline() {
