@@ -21,8 +21,10 @@ const{
 }=process.env
 
 const IN_PROD=NODE_ENV==='production '
-/*
-app.use(express.static('public'));
+
+app.use(express.static('public')); // Serves the JS and CSS files in the public folder
+
+/*/ Routing
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/web/index.html'));
 })
@@ -43,6 +45,12 @@ app.get('/signin', function(req, res) {
 })
 app.get('/signup', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/signup.ejs'));
+})
+app.get('/train.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/train.html'));
+})
+app.get('/practitionerAllocate.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/web/practitionerAllocate.html'));
 })
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/web/404.ejs'));
@@ -92,14 +100,14 @@ app.use(bodyParser.json());
      res.render('signin');
     })
 
+    app.get('/home',(req,res)=>{
+        res.render('index');
+       })
+
     app.get('/register',(req,res)=>{
         res.render('signup');
     })
 
-    app.get('/patientDashboard',(req,res)=>{
-        res.render('patientDashboard');
-    })
-   
     app.get('/programs',(req,res)=>{
         res.render('programs');
     })
@@ -162,12 +170,15 @@ console.log("in post login ");
                     }
                 })            
         })
-        app.get('/home' ,redirectLogin,(req,res)=>{
+
+
+        app.get('/patientDashboard' ,redirectLogin,(req,res)=>{
             newbody.findOne({email:req.session.userId})
             .then((patient)=>{
                 res.render('patientDashboard',{patient:patient});
             })
         })
+
 
 
         app.post('/logout',redirectLogin,(req,res)=>{
