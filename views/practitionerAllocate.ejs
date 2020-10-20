@@ -1,0 +1,92 @@
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="loading-bar.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="loading-bar.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
+        <a class="navbar-brand" href="index.html">Rehabilitation Assistance</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="practitionerDashboard.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Exercise</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <a class="btn btn-outline-success mr-2" href="signin.html">Sign In</a>
+                <a class="btn btn-outline-primary" href="signup.html">Sign Up</a>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>
+                            RAS - Assign Exercises to Patients
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row border rounded bg-light shadow m-3 p-3 justify-content-center">
+                <form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">PatientID</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                          <option selected>Choose...</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                      <label for="patientName">Patient Name</label>
+                      <input type="text" class="form-control" id="patientName" placeholder="James Tenna">
+                    </div>
+                    <div class="form-group">
+                        <label for="Exercise">Exercise</label>
+                        <input type="text" class="form-control" id="Exercise" placeholder="Biceps Brachii Flexion">
+                      </div>
+                      <div class="form-group">
+                        <label for="Exercise">repititions</label>
+                        <input type="text" class="form-control" id="repititions" placeholder="30">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>

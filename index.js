@@ -11,16 +11,16 @@ var bodyParser=require('body-parser');
 const { check, validationResult } = require('express-validator');
 var Schema=require('./patientSchema');
 var newbody = mongoose.model("latestcollection",Schema);
-const TWO_HOURS=1000* 60 * 60 * 2
+const TWO_HOURS = 1000* 60 * 60 * 2;
 const{
     NODE_ENV='development',
     SESS_NAME='session',
     SESS_SECRET='secretcookie',
     SESS_LIFETIME=TWO_HOURS
 
-}=process.env
+}=process.env;
 
-const IN_PROD=NODE_ENV==='production '
+const IN_PROD=NODE_ENV==='production ';
 
 app.use(express.static('public')); // Serves the JS and CSS files in the public folder
 
@@ -115,7 +115,14 @@ app.use(bodyParser.json());
     app.get('/doctors',(req,res)=>{
         res.render('doctors');
     })
-    
+
+    app.get('/practitionerDashboard',(req,res)=>{
+        res.render('practitionerDashboard');
+    })
+
+    app.get('/train',(req,res)=>{
+        res.render('train');
+    })
 
 app.post('/login',(req,res)=>{
 console.log("in post login ");

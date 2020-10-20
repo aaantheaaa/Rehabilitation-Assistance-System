@@ -1,0 +1,151 @@
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="loading-bar.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="loading-bar.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <img class="mr-3 ml-1" src="https://i.ibb.co/N9HjWcD/Untitled-1.png" alt="" width="36" height="36">
+        <a class="navbar-brand" href="index.html">Rehabilitation Assistance</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="practitionerDashboard.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Exercise</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <a class="btn btn-outline-success mr-2" href="signin.html">Sign In</a>
+                <a class="btn btn-outline-primary" href="signup.html">Sign Up</a>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>
+                            RAS - Practitioner Dashboard
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- START GRAPHS -->
+            <div class="row border rounded bg-light shadow m-3 p-3">
+                <div class="col-md-4 d-flex flex-grow justify-content-center">
+                    <div data-preset="circle" class="today-progress ldBar label-center" data-value="85">
+                    </div>
+                    <span class="badge badge-default">Todays Tasks</span>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div data-preset="circle" class="ldBar label-center month-progress" data-value="35">
+                    </div>
+                    <span class="badge badge-default">Months Progress</span>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div data-preset="circle" class="ldBar label-center program-progress" data-value="12">
+                    </div>
+                    <span class="badge badge-default">Program Completion</span>
+                </div>
+            </div>
+            <!-- END Graphs -->
+
+            <!-- START Table -->
+            <div class="row border rounded bg-light shadow m-3 p-3 justify-content-center">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Completion %</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="table-danger">
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>12%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>98%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>59%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+        </div>
+
+        <!-- BEGIN CARDS -->
+        <div class="row border rounded bg-light shadow m-3 p-3">
+            <div class="col-md-6">
+                <div class="card bg-default">
+                    <a href="/train">
+                        <div class="card-body d-flex justify-content-center">
+                            <p class="card-text">
+                            <h3>Train</h3>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-default">
+                    <a href="/programs">
+                        <div class="card-body d-flex justify-content-center">
+                            <p class="card-text">
+                            <h3>Programs</h3>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <footer class="mt-auto m-3 p-3">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; UTS Internet of Things group5</p>
+        </footer>
+</main>
+</body>
