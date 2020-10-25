@@ -143,7 +143,7 @@ console.log("in post login ");
                         if(patient.password === req.body.password ){
                             console.log('user authenticated');
                             req.session.userId=req.body.email;
-                            res.redirect('/home')
+                            res.redirect('/patientDashboard')
                         }
                         else{
                             res.send({passwordError: "incorrectPassword"})
