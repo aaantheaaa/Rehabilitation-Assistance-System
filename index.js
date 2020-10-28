@@ -126,6 +126,10 @@ app.use(bodyParser.json());
         res.render('practitionerDashboard');
     })
 
+    app.get('/practitionerAllocate',(req, res)=>{
+        res.render('practitionerAllocate');
+    })
+
     app.get('/train',(req,res)=>{
         res.render('train');
     })
